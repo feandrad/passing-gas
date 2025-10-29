@@ -2,28 +2,21 @@
   "schemaVersion": 1,
   "id": "passinggas",
   "version": "${version}",
-  "name": "Double Jump",
+  "name": "Passing Gas",
   "description": "Adds cabbages and a new potion effect to Minecraft!",
   "authors": [
     "feandrad"
   ],
   "contact": {
-    "repo": "https://github.com/feandrad/double-jump"
+    "repo": "https://github.com/feandrad/passinggas"
   },
   "license": "MIT",
-  "icon": "assets/passinggas/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "io.felipeandrade.passinggas.client.DoubleJumpClient"
-    ],
     "main": [
-      "io.felipeandrade.passinggas.DoubleJumpMod"
+      "io.felipeandrade.passinggas.fabric.PassingGasFabric"
     ]
   },
-  "mixins": [
-    "passinggas.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=0.14.21",
     "fabric-api": "*",

@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+sourceSets {
+    main {
+        resources.srcDir 'src/tools/datagen/resources'
+    }
+    test {
+        kotlin.srcDir 'src/test/kotlin'
+    }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.2"
+}
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(21)
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+    }
+}
