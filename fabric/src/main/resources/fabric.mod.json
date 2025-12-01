@@ -15,6 +15,9 @@
   "entrypoints": {
     "main": [
       "io.felipeandrade.passinggas.fabric.PassingGasFabric"
+    ],
+    "client": [
+      "io.felipeandrade.passinggas.fabric.PassingGasFabricClient"
     ]
   },
   "depends": {

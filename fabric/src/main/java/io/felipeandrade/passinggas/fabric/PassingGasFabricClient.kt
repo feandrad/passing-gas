@@ -1,14 +1,12 @@
 package io.felipeandrade.passinggas.fabric
 
+import dev.architectury.registry.client.rendering.RenderTypeRegistry
+import io.felipeandrade.passinggas.PassingGas
 import net.fabricmc.api.ClientModInitializer
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 
 class PassingGasFabricClient : ClientModInitializer {
     override fun onInitializeClient() {
-        // ColorProviderRegistry.ITEM.register(
-        //     { stack, tintIndex ->
-        //         if (tintIndex == 0) 0xFFFFFF else -1
-        //     },
-        //     PassingGas.MILK_BOTTLE.get()
-        // )
+        RenderTypeRegistry.register(ChunkSectionLayer.CUTOUT, PassingGas.CABBAGE_CROP.get())
     }
 }
