@@ -14,13 +14,13 @@ class FlatulenceEffect : MobEffect(MobEffectCategory.NEUTRAL, 0x32CD32) { // Cha
 
     override fun applyEffectTick(serverLevel: ServerLevel, livingEntity: LivingEntity, i: Int): Boolean {
         if (livingEntity is ServerPlayer && livingEntity.isCrouching) {
-            livingEntity.makeSound(FART_SOUND_EVENT.get())
-            LOG.info("Living entity ${livingEntity.getName()} farted because it was crouching")
+            livingEntity.playSound(FART_SOUND_EVENT.get(), 1.0f, 1.0f)
+            LOG.info("Living entity ${livingEntity.name} farted because it was crouching")
         } else {
             // 10% chance to play Fart Sound
             if (random.nextDouble() <= 0.1) {
-                livingEntity.makeSound(FART_SOUND_EVENT.get())
-                LOG.info("Living entity ${livingEntity.getName()} farted because of chance")
+                livingEntity.playSound(FART_SOUND_EVENT.get(), 1.0f, 1.0f)
+                LOG.info("Living entity ${livingEntity.name} farted because of chance")
             }
         }
 

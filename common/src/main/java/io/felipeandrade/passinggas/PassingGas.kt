@@ -60,8 +60,8 @@ object PassingGas {
             .stacksTo(16))
     }
 
-    val FART_SOUND_EVENT: RegistrySupplier<SoundEvent> = SOUND_EVENTS.register("event.fart") {
-        SoundEvent.createVariableRangeEvent(asResource("event.fart"))
+    val FART_SOUND_EVENT: RegistrySupplier<SoundEvent> = SOUND_EVENTS.register("fart") {
+        SoundEvent.createVariableRangeEvent(asResource("fart"))
     }
 
     val FLATULENCE_EFFECT: RegistrySupplier<MobEffect> = MOB_EFFECTS.register("flatulence_effect") {
