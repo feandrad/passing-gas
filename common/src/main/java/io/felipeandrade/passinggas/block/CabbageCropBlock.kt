@@ -13,7 +13,7 @@ import net.minecraft.world.phys.shapes.VoxelShape
 class CabbageCropBlock(properties: Properties) : CropBlock(properties) {
     override fun codec(): MapCodec<CabbageCropBlock> = CODEC
 
-    override fun getBaseSeedId(): ItemLike = CABBAGE_SEEDS
+    override fun getBaseSeedId(): ItemLike = CABBAGE_SEEDS.get()
 
     override fun getShape(
         blockState: BlockState,

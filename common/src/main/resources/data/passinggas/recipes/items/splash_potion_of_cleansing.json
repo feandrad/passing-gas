@@ -15,7 +15,7 @@
     }
   ],
   "result": {
-    "item": "passinggas:splash_potion_cleansing",
+    "id": "passinggas:splash_potion_cleansing",
     "count": 3
   }
 }

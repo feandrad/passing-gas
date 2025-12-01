@@ -13,11 +13,11 @@ class FlatulenceEffect : MobEffect(MobEffectCategory.NEUTRAL, 0x660066) {
 
     override fun applyEffectTick(serverLevel: ServerLevel, livingEntity: LivingEntity, i: Int): Boolean {
         if (livingEntity is ServerPlayer && livingEntity.isCrouching) {
-            livingEntity.makeSound(FART_SOUND_EVENT)
+            livingEntity.makeSound(FART_SOUND_EVENT.get())
         } else {
             // 10% chance to call playFartSound(entity);
             if (random.nextDouble() <= 0.1) {
-                livingEntity.makeSound(FART_SOUND_EVENT)
+                livingEntity.makeSound(FART_SOUND_EVENT.get())
             }
         }
 
