@@ -1,6 +1,7 @@
 package io.felipeandrade.passinggas.effect
 
 import io.felipeandrade.passinggas.PassingGas.FART_SOUND_EVENT
+import io.felipeandrade.passinggas.PassingGas.LOG
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.effect.MobEffect
@@ -8,16 +9,18 @@ import net.minecraft.world.effect.MobEffectCategory
 import net.minecraft.world.entity.LivingEntity
 import java.util.*
 
-class FlatulenceEffect : MobEffect(MobEffectCategory.NEUTRAL, 0x660066) {
+class FlatulenceEffect : MobEffect(MobEffectCategory.NEUTRAL, 0x32CD32) { // Changed color to Foul green
     private val random = Random()
 
     override fun applyEffectTick(serverLevel: ServerLevel, livingEntity: LivingEntity, i: Int): Boolean {
         if (livingEntity is ServerPlayer && livingEntity.isCrouching) {
             livingEntity.makeSound(FART_SOUND_EVENT.get())
+            LOG.info("Living entity ${livingEntity.getName()} farted because it was crouching")
         } else {
-            // 10% chance to call playFartSound(entity);
+            // 10% chance to play Fart Sound
             if (random.nextDouble() <= 0.1) {
                 livingEntity.makeSound(FART_SOUND_EVENT.get())
+                LOG.info("Living entity ${livingEntity.getName()} farted because of chance")
             }
         }
 
@@ -26,10 +29,8 @@ class FlatulenceEffect : MobEffect(MobEffectCategory.NEUTRAL, 0x660066) {
 
     override fun shouldApplyEffectTickThisTick(duration: Int, amplifier: Int): Boolean {
         val i = random.nextInt(25, 31) shr amplifier
-        if (i > 0) {
-            return duration % i == 0
-        } else {
-            return true
-        }
+        return if (i > 0) {
+            duration % i == 0
+        } else true
     }
 }
