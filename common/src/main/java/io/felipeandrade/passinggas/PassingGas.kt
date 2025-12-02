@@ -64,8 +64,8 @@ object PassingGas {
         SoundEvent.createVariableRangeEvent(asResource("fart"))
     }
 
-    val FLATULENCE_EFFECT: RegistrySupplier<MobEffect> = MOB_EFFECTS.register("flatulence_effect") {
-        FlatulenceEffect().withSoundOnAdded(FART_SOUND_EVENT.get())
+    val FLATULENCE_EFFECT: RegistrySupplier<MobEffect> = MOB_EFFECTS.register("flatulence") {
+        FlatulenceEffect()
     }
 
     val CABBAGE_FOOD: FoodProperties = FoodProperties.Builder()
