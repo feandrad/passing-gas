@@ -3,15 +3,16 @@ package io.felipeandrade.passinggas.entity
 import io.felipeandrade.passinggas.PassingGas
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.phys.EntityHitResult
 import net.minecraft.world.phys.HitResult
 
-class PotionEntityOfCleansing : net.minecraft.world.entity.projectile.ThrowableItemProjectile {
+class PotionEntityOfCleansing : ThrowableItemProjectile {
 
-    constructor(entityType: EntityType<out net.minecraft.world.entity.projectile.ThrowableItemProjectile>, level: Level) : super(entityType, level)
+    constructor(entityType: EntityType<out ThrowableItemProjectile>, level: Level) : super(entityType, level)
 
     constructor(level: Level, owner: LivingEntity) : super(PassingGas.POTION_ENTITY_OF_CLEANSING.get(), owner, level, ItemStack(PassingGas.SPLASH_POTION_OF_CLEANSING.get()))
 

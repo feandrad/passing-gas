@@ -10,7 +10,6 @@ import net.minecraft.core.Holder
 import net.minecraft.core.Registry
 import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.Registries
-import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.sounds.SoundEvent
@@ -19,13 +18,16 @@ import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobCategory
 import net.minecraft.world.food.FoodProperties
-import net.minecraft.world.item.*
+import net.minecraft.world.item.BlockItem
+import net.minecraft.world.item.CreativeModeTab
+import net.minecraft.world.item.Item
+import net.minecraft.world.item.Items
 import net.minecraft.world.item.alchemy.Potion
-import net.minecraft.world.item.alchemy.PotionContents
 import net.minecraft.world.item.component.Consumable
 import net.minecraft.world.item.component.Consumables
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect
 import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect
+import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockBehaviour
@@ -116,7 +118,7 @@ object PassingGas {
     }
 
     val POTION_ENTITY_OF_CLEANSING = ENTITY_TYPES.register("splash_potion_of_cleansing") {
-        EntityType.Builder.of<PotionEntityOfCleansing>(::PotionEntityOfCleansing, MobCategory.MISC)
+        EntityType.Builder.of({ type: EntityType<PotionEntityOfCleansing>, level: Level -> PotionEntityOfCleansing(type, level) }, MobCategory.MISC)
             .sized(0.25f, 0.25f)
             .clientTrackingRange(4)
             .updateInterval(10)
@@ -129,26 +131,44 @@ object PassingGas {
             .stacksTo(16))
     }
 
-    val PASSING_GAS_TAB: RegistrySupplier<CreativeModeTab> = CREATIVE_MODE_TABS.register("passing_gas_tab") {
-        CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
-            .title(Component.translatable("itemGroup.passinggas"))
-            .icon { ItemStack(CABBAGE.get()) }
-            .displayItems { _, output ->
-                output.accept(CABBAGE.get())
-                output.accept(CABBAGE_SEEDS.get())
-                output.accept(MILK_BOTTLE.get())
-                output.accept(SPLASH_POTION_OF_CLEANSING.get())
-
-                val potionStack = ItemStack(Items.POTION)
-                potionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(FLATULENCE_POTION.get())))
-                output.accept(potionStack)
-
-                val longPotionStack = ItemStack(Items.POTION)
-                longPotionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(LONG_FLATULENCE_POTION.get())))
-                output.accept(longPotionStack)
-            }
-            .build()
-    }
+//    val PASSING_GAS_TAB: RegistrySupplier<CreativeModeTab> = CREATIVE_MODE_TABS.register("passing_gas_tab") {
+//        CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+//            .title(Component.translatable("itemGroup.passinggas"))
+//            .icon { ItemStack(CABBAGE.get()) }
+//            .displayItems { _, output ->
+//                output.accept(CABBAGE.get())
+//                output.accept(CABBAGE_SEEDS.get())
+//                output.accept(MILK_BOTTLE.get())
+//                output.accept(SPLASH_POTION_OF_CLEANSING.get())
+//
+//                // Flatulence Potions
+//                val potionStack = ItemStack(Items.POTION)
+//                potionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(FLATULENCE_POTION.get())))
+//                output.accept(potionStack)
+//
+//                val splashPotionStack = ItemStack(Items.SPLASH_POTION)
+//                splashPotionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(FLATULENCE_POTION.get())))
+//                output.accept(splashPotionStack)
+//
+//                val lingeringPotionStack = ItemStack(Items.LINGERING_POTION)
+//                lingeringPotionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(FLATULENCE_POTION.get())))
+//                output.accept(lingeringPotionStack)
+//
+//                // Long Flatulence Potions
+//                val longPotionStack = ItemStack(Items.POTION)
+//                longPotionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(LONG_FLATULENCE_POTION.get())))
+//                output.accept(longPotionStack)
+//
+//                val longSplashPotionStack = ItemStack(Items.SPLASH_POTION)
+//                longSplashPotionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(LONG_FLATULENCE_POTION.get())))
+//                output.accept(longSplashPotionStack)
+//
+//                val longLingeringPotionStack = ItemStack(Items.LINGERING_POTION)
+//                longLingeringPotionStack.set(DataComponents.POTION_CONTENTS, PotionContents(Holder.direct(LONG_FLATULENCE_POTION.get())))
+//                output.accept(longLingeringPotionStack)
+//            }
+//            .build()
+//    }
 
     fun asResource(path: String): ResourceLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, path)
 

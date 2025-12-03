@@ -2,7 +2,7 @@
   "item.passinggas.cabbage": "Cabbage",
   "item.passinggas.cabbage_seeds": "Cabbage Seeds",
   "block.passinggas.cabbage_crop": "Cabbage Crop",
-  "itemGroup.passinggas.food": "Double Jump Food",
+  "itemGroup.passinggas": "Passing Gas",
 
   "statusEffect.passinggas.flatulence": "Flatulence",
   "effect.passinggas.flatulence": "Flatulence",
@@ -21,5 +21,5 @@
   "item.minecraft.tipped_arrow.effect.long_flatulence": "Arrow of Flatulence",
 
   "item.passinggas.milk_bottle": "Milk Bottle",
-  "item.passinggas.splash_potion_cleansing":  "Splash Potion of Cleansing"
+  "item.passinggas.splash_potion_of_cleansing":  "Splash Potion of Cleansing"
 }

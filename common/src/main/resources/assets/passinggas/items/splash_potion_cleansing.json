@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "passinggas:item/splash_potion_cleansing"
+    "model": "passinggas:item/splash_potion_of_cleansing"
   }
 }
