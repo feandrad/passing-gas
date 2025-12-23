@@ -7,7 +7,7 @@
   ],
   "pools": [
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -16,7 +16,7 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "block": "passinggas:cabbage_crop",
+                  "block": "passinggas:cabbage_crop_block",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "age": "7"
@@ -32,13 +32,13 @@
           ]
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "conditions": [
         {
-          "block": "passinggas:cabbage_crop",
+          "block": "passinggas:cabbage_crop_block",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "7"
@@ -62,7 +62,7 @@
           "name": "passinggas:cabbage_seeds"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ]
 }

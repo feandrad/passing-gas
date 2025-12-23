@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "io.felipeandrade.passinggas.fabric.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "passinggas.refmap.json",
+  "mixins": [
+    "WanderingTraderMixin"
+  ],
+  "client": [],
+  "server": [],
+  "minVersion": "0.8"
+}
